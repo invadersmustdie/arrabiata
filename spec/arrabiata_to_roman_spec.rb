@@ -32,4 +32,20 @@ describe "Arrabiata -> to_roman" do
   it "should convert 2855 to MMDCCCLV" do
     Arrabiata.to_roman(2855).should == "MMDCCCLV"
   end
+
+  it "should convert 79 to LXXIX" do
+    Arrabiata.to_roman(79).should == "LXXIX"
+  end
+
+  it "should convert 4 to IV" do
+    Arrabiata.to_roman(4).should == "IV"
+  end
+
+  it "should convert 19 to XIX" do
+    Arrabiata.to_roman(19).should == "XIX"
+  end
+
+  it "should convert 8759 to MMMMMMMMDCCLIX" do
+    Arrabiata.to_roman(8759).should == "MMMMMMMMDCCLIX"
+  end
 end

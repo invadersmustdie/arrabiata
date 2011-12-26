@@ -4,13 +4,19 @@ class Arrabiata
   class UnknownRomanNumberError < ArrabiataError; end
 
   CONVERSION = {
-    "M" => 1000,
-    "D" => 500,
-    "C" => 100,
-    "L" => 50,
-    "X" => 10,
-    "V" => 5,
-    "I" => 1
+    "M"     => 1000,
+    "CM"    => 900,
+    "D"     => 500,
+    "CD"    => 400,
+    "C"     => 100,
+    "XC"    => 90,
+    "L"     => 50,
+    "XL"    => 40,
+    "X"     => 10,
+    "IX"    => 9,
+    "V"     => 5,
+    "IV"    => 4,
+    "I"     => 1
   }
 
   def self.to_roman(n)
@@ -19,12 +25,10 @@ class Arrabiata
 
     result = ""
 
-    # NOTE: this version doesn't yet respects the subtractive principle
-    CONVERSION.sort_by { |d| d.last }.reverse.each do |k|
-      x = n / k.last
-      if x != 0
-        result << k.first * x
-        n = n - x * k.last
+    CONVERSION.sort_by { |d| d.last }.reverse.each do |roman, arabic|
+      while(n >= arabic) do
+        result << roman
+        n -= arabic
       end
     end
 
