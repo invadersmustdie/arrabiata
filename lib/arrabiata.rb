@@ -19,6 +19,11 @@ class Arrabiata
     "I"     => 1
   }
 
+  # Converts arabic number to roman letters.
+  #
+  # @param [Fixnum] arabic number
+  # @return [String] roman letters
+  #
   def self.to_roman(n)
     raise ArgumentError, "first argument is not a Fixnum" if !n.is_a?(Fixnum)
     raise NoZeroInRomanNumbers, "roman numeral system doesn't include 0" if n == 0
@@ -35,7 +40,12 @@ class Arrabiata
     result
   end
 
-  def self.to_arabian(str)
+  # Converts roman letters to arabic number.
+  #
+  # @param [String] roman letters
+  # @return [Fixnum] arabic number
+  #
+  def self.to_arabic(str)
     raise ArgumentError, "first argument is not a String" if !str.is_a?(String)
 
     result = 0
@@ -46,5 +56,11 @@ class Arrabiata
     end
 
     result
+  end
+
+  # @deprecated
+  #  Use .to_arabic instead.
+  def self.to_arabian(str)
+    to_arabic(str)
   end
 end
