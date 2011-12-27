@@ -13,23 +13,17 @@ describe "Arrabiata -> to_arabic" do
     }.should raise_error(ArgumentError, "first argument is not a String")
   end
 
-  it "should convert III to 3" do
-    Arrabiata.to_arabic("III").should == 3
-  end
+  roman_to_arabic_map = {
+    "III" => 3,
+    "VIII" => 8,
+    "M" => 1000,
+    "MIII" => 1003,
+    "MMDCCCLV" => 2855
+  }
 
-  it "should convert VIII to 8" do
-    Arrabiata.to_arabic("VIII").should == 8
-  end
-
-  it "should convert M to 1000" do
-    Arrabiata.to_arabic("M").should == 1000
-  end
-
-  it "should convert MIII to 1003" do
-    Arrabiata.to_arabic("MIII").should == 1003
-  end
-
-  it "should convert MMDCCCLV to 2855 " do
-    Arrabiata.to_arabic("MMDCCCLV").should == 2855
+  roman_to_arabic_map.each do |roman, arabic|
+    it "should convert #{roman} to #{arabic}" do
+      Arrabiata.to_arabic(roman).should == arabic
+    end
   end
 end
