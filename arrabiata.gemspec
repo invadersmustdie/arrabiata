@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{arrabiata}
-  s.version = "0.1.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["invadersmustdie"]
-  s.date = %q{2011-01-20}
-  s.description = %q{dead simple conversion of roman <> arabian numerals}
+  s.date = %q{2011-12-26}
+  s.description = %q{dead simple conversion of roman <> arabic numerals}
   s.email = %q{rugek@dirtyhack.net}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -21,16 +21,19 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "arrabiata.gemspec",
     "lib/arrabiata.rb",
+    "spec/arrabiata_to_arabic_spec.rb",
+    "spec/arrabiata_to_roman_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/invadersmustdie/arrabiata}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{dead simple conversion of roman <> arabian numerals}
+  s.summary = %q{dead simple conversion of roman <> arabic numerals}
   s.test_files = [
-    "spec/arrabiata_to_arabian_spec.rb",
+    "spec/arrabiata_to_arabic_spec.rb",
     "spec/arrabiata_to_roman_spec.rb",
     "spec/spec_helper.rb"
   ]
