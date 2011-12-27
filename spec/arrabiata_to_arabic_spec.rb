@@ -16,6 +16,9 @@ describe "Arrabiata -> to_arabic" do
   roman_to_arabic_map = {
     "III" => 3,
     "VIII" => 8,
+    "IX" => 9,
+    "XIV" => 14,
+    "XIX" => 19,
     "M" => 1000,
     "MIII" => 1003,
     "MMDCCCLV" => 2855
@@ -24,6 +27,15 @@ describe "Arrabiata -> to_arabic" do
   roman_to_arabic_map.each do |roman, arabic|
     it "should convert #{roman} to #{arabic}" do
       Arrabiata.to_arabic(roman).should == arabic
+    end
+  end
+
+  # smoke test
+  1.upto(1000) do |n|
+    roman_letters = Arrabiata.to_roman(n)
+
+    it "should convert #{n} / #{roman_letters} forward and backward" do 
+      Arrabiata.to_arabic(roman_letters).should == n
     end
   end
 end

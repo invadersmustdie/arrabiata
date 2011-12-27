@@ -50,9 +50,29 @@ class Arrabiata
 
     result = 0
 
-    str.scan(/\w/).each do |char|
+    chars = str.scan(/\w/)
+    sum_up = 0
+    sub_down = 0
+
+    chars.each_with_index do |char, idx|
       raise UnknownRomanNumberError, "'#{char}' is not defined in roman numbers" if !CONVERSION[char]
-      result = result + CONVERSION[char]
+
+      current_value = CONVERSION[char]
+      next_char = chars[idx+1]
+      next_value = CONVERSION[next_char]
+
+      if next_value && next_value >= current_value
+        if next_value > current_value
+          sub_down += current_value
+        elsif next_value == current_value
+          sum_up += current_value
+        end
+      else
+        result = result + current_value + sum_up - sub_down
+
+        sum_up = 0
+        sub_down = 0
+      end
     end
 
     result
